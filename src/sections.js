@@ -1,0 +1,51 @@
+// Edit this file to change the wheel options, page colors and content.
+export const sections = [
+  {
+    id: 'home',
+    label: 'Home',
+    bg: '#ffffff',
+    fg: '#0a0a0a',
+    title: 'Hi, I’m Your Name.',
+    body: 'I design and build clean, minimal things for the web.',
+  },
+  {
+    id: 'about',
+    label: 'About',
+    bg: '#ffd23f',
+    fg: '#0a0a0a',
+    title: 'About me',
+    body: 'A short paragraph about who you are, what you care about and what you are looking for.',
+  },
+  {
+    id: 'projects',
+    label: 'Past Projects',
+    bg: '#2447ff',
+    fg: '#ffffff',
+    title: 'Past Projects',
+    body: 'Project One — short description.\nProject Two — short description.\nProject Three — short description.',
+  },
+  {
+    id: 'experience',
+    label: 'Experience',
+    bg: '#12a150',
+    fg: '#ffffff',
+    title: 'Experience',
+    body: 'Company A — Role, 2023–now.\nCompany B — Role, 2021–2023.',
+  },
+  {
+    id: 'skills',
+    label: 'Skills',
+    bg: '#7a3cff',
+    fg: '#ffffff',
+    title: 'Skills',
+    body: 'React · TypeScript · Node · Design · Motion',
+  },
+  {
+    id: 'contact',
+    label: 'Contact',
+    bg: '#0a0a0a',
+    fg: '#ffffff',
+    title: 'Let’s talk',
+    body: 'you@example.com',
+  },
+]
