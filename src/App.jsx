@@ -4,6 +4,11 @@ import { sections } from './sections.js'
 
 export default function App() {
   const [index, setIndex] = useState(0)
+  const [sub, setSub] = useState(0)
+  const indexRef = useRef(0)
+  const subRef = useRef(0)
+  indexRef.current = index
+  subRef.current = sub
   const acc = useRef(0)
   const lockedUntil = useRef(0)
 
@@ -16,6 +21,12 @@ export default function App() {
       const now = performance.now()
       if (now < lockedUntil.current) return
       lockedUntil.current = now + 550
+      // While a sub-wheel is open it takes the input; at its ends the main wheel continues.
+      const children = sections[indexRef.current].children
+      if (children) {
+        const next = subRef.current + dir
+        if (next >= 0 && next < children.length) return setSub(next)
+      }
       go((i) => i + dir)
     }
 
@@ -52,14 +63,38 @@ export default function App() {
     }
   }, [go])
 
-  const section = sections[index]
+  // Start every sub-wheel at its first option when the main wheel moves.
+  useEffect(() => { setSub(0) }, [index])
+
+  const parent = sections[index]
+  const section = parent.children ? parent.children[sub] : parent
 
   return (
     <main className="page" style={{ '--bg': section.bg, '--fg': section.fg }}>
       <Wheel items={sections} index={index} onSelect={go} />
+      {parent.children && (
+        <Wheel
+          key={parent.id}
+          className="sub"
+          items={parent.children}
+          index={sub}
+          onSelect={setSub}
+          step={0.3}
+          radiusFactor={0.6}
+          visible={2}
+        />
+      )}
       <section className="content" key={section.id}>
+        {section.photo && <img className="photo" src={section.photo} alt="Angelos" />}
         <h1>{section.title}</h1>
-        <p>{section.body}</p>
+        {section.body && <p>{section.body}</p>}
+        {section.links && (
+          <div className="links">
+            {section.links.map((l) => (
+              <a key={l.label} href={l.href} target="_blank" rel="noreferrer">{l.label} <span>↗</span></a>
+            ))}
+          </div>
+        )}
       </section>
       <footer className="hint">Scroll · ↑ ↓ · click</footer>
     </main>

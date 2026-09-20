@@ -5,8 +5,8 @@ export const sections = [
     label: 'Home',
     bg: '#ffffff',
     fg: '#0a0a0a',
-    title: 'Hi, I’m Your Name.',
-    body: 'I design and build clean, minimal things for the web.',
+    title: 'Hi, I’m Angelos Karasavvidis.',
+    body: 'I design and build clean, useful and complete things for the web.',
   },
   {
     id: 'about',
@@ -14,7 +14,7 @@ export const sections = [
     bg: '#ffd23f',
     fg: '#0a0a0a',
     title: 'About me',
-    body: 'A short paragraph about who you are, what you care about and what you are looking for.',
+    body: 'Currently on my senior year (MSc/BEng in Electrical Engineering @NTUA), I have gained knowledge, mainly on software and AI enginering, automatic control and robotics. At the same time, through the organizations where I have volunteered, I have managed to acquire various soft skills, such as teamwork and communication. I am always willing to explore and learn something new.',
   },
   {
     id: 'projects',
@@ -31,6 +31,25 @@ export const sections = [
     fg: '#ffffff',
     title: 'Experience',
     body: 'Company A — Role, 2023–now.\nCompany B — Role, 2021–2023.',
+    // Opens a second wheel in front of the main one.
+    children: [
+      {
+        id: 'work',
+        label: 'Work',
+        bg: '#12a150',
+        fg: '#ffffff',
+        title: 'Work',
+        body: 'Company A — Role, 2023–now.\nCompany B — Role, 2021–2023.',
+      },
+      {
+        id: 'volunteer',
+        label: 'Volunteer',
+        bg: '#e5575b',
+        fg: '#ffffff',
+        title: 'Volunteer',
+        body: 'Organisation A — what you did.\nOrganisation B — what you did.',
+      },
+    ],
   },
   {
     id: 'skills',
@@ -46,6 +65,11 @@ export const sections = [
     bg: '#0a0a0a',
     fg: '#ffffff',
     title: 'Let’s talk',
-    body: 'you@example.com',
+    body: '',
+    // photo: '/angelos.jpg',
+    links: [
+      { label: 'Email', href: 'mailto:you@example.com' },
+      { label: 'LinkedIn', href: 'https://www.linkedin.com/in/your-profile' },
+    ],
   },
 ]

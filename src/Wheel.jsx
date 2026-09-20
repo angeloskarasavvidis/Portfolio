@@ -1,20 +1,19 @@
 import { useEffect, useRef, useState } from 'react'
 
-const STEP = 0.19 // radians between neighbouring options
-const VISIBLE = 4 // options shown on each side of the active one
-
-export default function Wheel({ items, index, onSelect }) {
+export default function Wheel({ items, index, onSelect, className = '', step = 0.19, radiusFactor = 0.95, visible = 4 }) {
+  const STEP = step
+  const VISIBLE = visible
   const [progress, setProgress] = useState(index)
-  const [radius, setRadius] = useState(() => window.innerHeight * 0.95)
+  const [radius, setRadius] = useState(() => window.innerHeight * radiusFactor)
   const current = useRef(index)
   const target = useRef(index)
   const raf = useRef(0)
 
   useEffect(() => {
-    const onResize = () => setRadius(window.innerHeight * 0.95)
+    const onResize = () => setRadius(window.innerHeight * radiusFactor)
     window.addEventListener('resize', onResize)
     return () => window.removeEventListener('resize', onResize)
-  }, [])
+  }, [radiusFactor])
 
   // Ease the wheel toward the selected index.
   useEffect(() => {
@@ -36,7 +35,7 @@ export default function Wheel({ items, index, onSelect }) {
   }, [index])
 
   return (
-    <nav className="wheel" aria-label="Sections">
+    <nav className={`wheel ${className}`} aria-label="Sections">
       {items.map((item, i) => {
         const d = i - progress
         const abs = Math.abs(d)
