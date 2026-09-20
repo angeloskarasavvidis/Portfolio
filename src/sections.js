@@ -69,7 +69,7 @@ export const sections = [
     // photo: '/angelos.jpg',
     links: [
       { label: 'Email', href: 'mailto:angelkarasavvidis@gmail.com' },
-      { label: 'LinkedIn', href: 'www.linkedin.com/in/angelos-karasavvidis-3a3802231' },
+      { label: 'LinkedIn', href: 'https://www.linkedin.com/in/angelos-karasavvidis-3a3802231/' },
     ],
   },
 ]
